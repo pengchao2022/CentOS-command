@@ -1,0 +1,29 @@
+更改centos6的yum源为阿里云的yum源
+
+方法：
+
+1、进入到/etc/yum.repos.d/目录下，备份之前的CentOS-Base.repo地址。
+
+cd /etc/yum.repos.d/
+
+mv CentOS-Base.repo CentOS-Base.repo.bak
+
+2、下载阿里云yum源
+
+centos6：wget -O CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+
+centot5：wget -O CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-5.repo
+
+
+
+3、将服务器上的软件包信息缓存到本地,以提高搜索安装软件的速度
+
+yum makecache
+
+如果你在执行上面这边命令时，报错：Error: Cannot retrieve metalink for repository: epel. Please verify its path and try again
+
+建议用如下方法解决：检查/etc/yum.repos.d/下是否有epel.repo文件，如果有，重命名为epel.repo_bak 千万不能以.repo格式备份，然后在执行一次上面的命令即可！
+
+CentOS7对应地址：http://mirrors.aliyun.com/repo/Centos-7.repo
+
+ 
