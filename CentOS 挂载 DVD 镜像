@@ -1,0 +1,21 @@
+使用 blkid  查看到 设备信息 ：
+
+[root@control pengchao]# blkid
+/dev/sda1: UUID="ab41c06b-dd04-45bc-b17d-11ab1775c898" TYPE="xfs" 
+/dev/sda2: UUID="c3120815-dcb8-4ba6-90fe-da7bd01cd2c9" TYPE="swap" 
+/dev/sda3: UUID="1e007d29-a055-4c8a-bc95-da4feeffba50" TYPE="xfs" 
+/dev/sr1: UUID="2020-11-04-11-36-43-00" LABEL="CentOS 7 x86_64" TYPE="iso9660" PTTYPE="dos"
+
+如设备是 /dev/sr1 
+
+创建挂载点 ：
+
+ mkdir /media/iso 
+
+将DVD 设备 /dev/sr1 挂在到 /media/iso
+
+mount /dev/sr0 /media/iso/
+
+编辑 fstabl 文件，将DVD UUID 写入文件 ：
+
+UUID=2019-08-15-21-52-52-00             /media/iso                iso9660 ro,user,auto  0 0
