@@ -20,8 +20,13 @@ Matching Defaults entries for kate on node1:
     LC_PAPER LC_TELEPHONE", env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY",
     secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin
 
-User kate may run the following commands on node1:
-    (root) /usr/sbin/useradd, /usr/bin/passwd, /usr/bin/yum, /usr/bin/systemctl
-[kate@node1 root]$ 
+如果不需要输入密码，如kate 不用输入密码 可以写如下：NOPASSWD 注意后面要有一个空格
+
+## Allow root to run any commands anywhere 
+root    ALL=(ALL)       ALL
+lily    ALL=(root)      /usr/sbin/useradd,/usr/bin/passwd,/usr/bin/systemctl,/usr/bin/yum
+kate    ALL=(root)      NOPASSWD: /usr/sbin/useradd,/usr/bin/passwd, /usr/bin/yum,/usr/bin/systemctl
+
+
 
 
