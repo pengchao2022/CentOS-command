@@ -9,3 +9,19 @@ kate    ALL=(root)      /usr/sbin/useradd,/usr/bin/passwd, /usr/bin/yum,/usr/bin
 ALL 表示所有主机
 (root) 表示以root 的身份运行 当然也可以以 ALL 所有人的身份运行，这里面就包括了 root 用户
 
+使用 sudo -l 可以查看账号所赋予的权限：
+
+[kate@node1 root]$ sudo -l
+[sudo] password for kate: 
+Matching Defaults entries for kate on node1:
+    !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin, env_reset, env_keep="COLORS DISPLAY
+    HOSTNAME HISTSIZE KDEDIR LS_COLORS", env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE",
+    env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES", env_keep+="LC_MONETARY LC_NAME LC_NUMERIC
+    LC_PAPER LC_TELEPHONE", env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY",
+    secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin
+
+User kate may run the following commands on node1:
+    (root) /usr/sbin/useradd, /usr/bin/passwd, /usr/bin/yum, /usr/bin/systemctl
+[kate@node1 root]$ 
+
+
