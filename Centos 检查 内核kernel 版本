@@ -1,0 +1,7 @@
+Centos 检查 内核 kernel 版本 使用命令：
+
+
+[root@control ansible]# uname -r
+3.10.0-1160.el7.x86_64
+[root@control ansible]# 
+
