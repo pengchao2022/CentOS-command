@@ -4,6 +4,8 @@ Step 1 – Enable MySQL Repository
 
 sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022 
 
+sudo yum localinstall https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm 
+
 Step 2 – Installing MySQL 5.7 Server
 
 sudo yum install mysql-community-server 
