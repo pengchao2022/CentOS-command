@@ -1,0 +1,6 @@
+进程运行完后给系统的返回值
+
+$? 为 0 ------ 表示上次执行了正确的指令
+
+[root@centosx phobe]# $?
+bash: 0: command not found...
