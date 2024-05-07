@@ -1,0 +1,13 @@
+centos 安装MySQL 5.7社区版
+
+Step 1 – Enable MySQL Repository
+
+sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022 
+
+Step 2 – Installing MySQL 5.7 Server
+
+sudo yum install mysql-community-server 
+
+启动 mysql:
+
+systemctl start mysqld
