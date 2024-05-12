@@ -13,3 +13,9 @@ sudo yum install mysql-community-server
 启动 mysql:
 
 systemctl start mysqld
+
+--------------
+
+卸载 mysql 社区版：
+
+[root@mysql ~]# yum -y remove mysql*
