@@ -1,0 +1,72 @@
+
+# This artical will help you set the ssh remote connection when it's default port is not 22
+
+1, go to the console and use your local root password to login
+
+2, Edit the ssh config file
+[root@AliyunOS ~]# vim /etc/ssh/sshd_config
+
+3, Find the port location adn change the port to 22
+
+Port 22
+#AddressFamily any
+#ListenAddress 0.0.0.0
+#ListenAddress ::
+
+4, Restart the sshd service
+
+[root@AliyunOS ~]# systemctl restart sshd
+
+5, Check the firewall state
+[root@AliyunOS ~]# firewall-cmd --state
+running
+
+6, Check the firewall service status
+[root@AliyunOS ~]# systemctl status firewalld
+● firewalld.service - firewalld - dynamic firewall daemon
+   Loaded: loaded (/usr/lib/systemd/system/firewalld.service; enabled; vendor preset: enabled)
+   Active: active (running) since Mon 2024-06-24 09:57:07 CST; 11min ago
+     Docs: man:firewalld(1)
+
+
+7, check the firewall allowed ports list
+[root@AliyunOS ~]# firewall-cmd --list-all
+You're performing an operation over default zone ('public'),
+but your connections/interfaces are in zone 'trusted' (see --get-active-zones)
+You most likely need to use --zone=trusted option.
+
+public
+  target: default
+  icmp-block-inversion: no
+  interfaces:
+  sources:
+  services: dhcpv6-client except_hik_opsmgr_agent hik_firewallconfig_service http https ntp ssh
+  ports: 55555/tcp 5500/tcp 35003/tcp 35005/tcp 35010/tcp 8011/tcp 8001/tcp 7003/tcp 7002/tcp 8356/tcp 
+  protocols:
+  masquerade: no
+  forward-ports:
+  source-ports:
+  icmp-blocks:
+  rich rules:
+
+8, Add the tcp port 22 to allowed firewall list
+
+[root@AliyunOS ~]# firewall-cmd --permanent --add-port=22/tcp
+
+9, Query the tcp port 22 status
+
+[root@AliyunOS ~]# firewall-cmd --query-port=22/tcp
+You're performing an operation over default zone ('public'),
+but your connections/interfaces are in zone 'trusted' (see --get-active-zones)
+You most likely need to use --zone=trusted option.
+
+yes
+
+
+10, Restart firewalld service
+
+[root@AliyunOS ~]# systemctl restart firewalld
+
+
+# Now you can use ssh root@XX.XX.XX.XX to login the linux server
+
