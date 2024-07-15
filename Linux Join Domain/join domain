@@ -1,0 +1,9 @@
+Linux server need to join the domain you can use the following command:
+
+[root@vcichv001:~] #net ads join -S rnap03408sv001.chinabmw.com -U actionaccount
+
+
+or you can use the realm command to join the machine to the domain:
+
+[root@vcichv001:~] #realm join asia.chinabmw.com -U actionaccount
+
